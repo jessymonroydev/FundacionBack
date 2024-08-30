@@ -7,11 +7,16 @@ import { Count } from './schema/count.schema';
 export class CountService {
   constructor(@InjectModel('Count') private readonly countModel: Model<Count>) {}
 
-  async incrementCount(route: string): Promise<Count> {
-    return this.countModel.findOneAndUpdate(
+  async incrementCount(route: string): Promise<void> {
+    await this.countModel.findOneAndUpdate(
       { route },
       { $inc: { count: 1 } },
-      { new: true, upsert: true }
+      { upsert: true }
     ).exec();
+  }
+
+  async getCount(route: string): Promise<number> {
+    const countDoc = await this.countModel.findOne({ route }).exec();
+    return countDoc ? countDoc.count : 0;
   }
 }
