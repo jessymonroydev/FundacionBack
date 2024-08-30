@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'https://fundacionvolveranacerkids.org', // Permitir solo este dominio
+    origin: 'true', // Permitir solo este dominio
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true, // Si necesitas enviar cookies o encabezados de autorización
   });
