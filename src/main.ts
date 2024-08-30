@@ -6,8 +6,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: 'https://fundacionvolveranacerkids.org', // Permitir solo este dominio
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true, // Si necesitas enviar cookies o encabezados de autorización
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS'
   });
 
   const port = process.env.PORT || 3000;
